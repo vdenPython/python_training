@@ -1,17 +1,6 @@
 # -*- coding: utf-8 -*-
-from model.group import Group
+__author__ = 'vden'
 from model.contact import Contact
-
-
-def test_add_group(app):
-    app.session.login(username="admin", password="secret")
-    app.group.create(Group(name="dfdfdfd", header="fdfdfdfd", footer="dfdfdfdfd"))
-    app.session.logout()
-
-def test_add_empty_group(app):
-    app.session.login(username="admin", password="secret")
-    app.group.create(Group(name="", header="", footer=""))
-    app.session.logout()
 
 def test_add_contact(app):
     app.session.login(username="admin", password="secret")
@@ -29,3 +18,4 @@ def test_add_empty_contact(app):
                                address="", home="", mobile="", work="",
                                fax="", address2="", phone2="", notes=""))
     app.session.logout()
+

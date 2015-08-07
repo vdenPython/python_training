@@ -53,3 +53,8 @@ class ContactHelper:
         wd.find_element_by_name("notes").send_keys(contact.notes)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
+    def delete_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
+
