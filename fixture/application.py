@@ -4,6 +4,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from fixture.session import SessionHelper
 from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
+from fixture.navigation import NavigationHelper
 
 
 class Application:
@@ -14,14 +15,7 @@ class Application:
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
-
-    def open_page(self, name_page):
-        wd = self.wd
-        wd.find_element_by_link_text(name_page).click()
-
-    def open_home_page(self):
-        wd = self.wd
-        wd.get("http://192.168.0.2/addressbook/index.php")
+        self.navigation = NavigationHelper(self)
 
     def destroy(self):
         self.wd.quit()

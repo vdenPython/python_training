@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 __author__ = 'vden'
 
 class ContactHelper:
@@ -7,7 +8,7 @@ class ContactHelper:
 
     def create(self, contact):
         wd = self.app.wd
-        self.app.open_page(name_page="add new")
+        self.app.navigation.open_page(name_page="add new")
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)

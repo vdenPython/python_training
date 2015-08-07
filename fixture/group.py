@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 __author__ = 'vden'
 
 class GroupHelper:
@@ -11,7 +12,7 @@ class GroupHelper:
 
     def create(self, group):
         wd = self.app.wd
-        self.app.open_page(name_page="groups")
+        self.app.navigation.open_page(name_page="groups")
         # init group creation
         wd.find_element_by_name("new").click()
         # fill group firm
