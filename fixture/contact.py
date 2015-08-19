@@ -8,9 +8,10 @@ class ContactHelper:
 
     def create(self, contact):
         wd = self.app.wd
-        self.app.navigation.open_page(name_page="add new")
+        self.app.navigation.open_add_new_page()
         self.fill_contact_form(contact)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.app.navigation.open_add_new_page()
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
