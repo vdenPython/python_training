@@ -5,6 +5,7 @@ from fixture.session import SessionHelper
 from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
 from fixture.navigation import NavigationHelper
+from fixture.common import CommonHelper
 
 
 class Application:
@@ -16,8 +17,12 @@ class Application:
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
         self.navigation = NavigationHelper(self)
+        self.common = CommonHelper(self)
 
     def destroy(self):
         self.wd.quit()
+
+
+
 
 
