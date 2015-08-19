@@ -31,11 +31,18 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.app.navigation.open_home_page()
         wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
         wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
 
-    def modify_first_contact(self, new_group_date):
+    def modify_first_contact(self, new_contact_date):
         wd = self.app.wd
+        self.app.navigation.open_home_page()
         wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
-        self.fill_contact_form(new_group_date)
+        self.fill_contact_form(new_contact_date)
         wd.find_element_by_name("update").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        return len(wd.find_elements_by_name("selected[]"))

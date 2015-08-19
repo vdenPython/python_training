@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'vden'
 
+
 class GroupHelper:
 
     def __init__(self, app):
@@ -45,4 +46,9 @@ class GroupHelper:
         self.fill_group_form(new_group_date)
         wd.find_element_by_name("update").click()
         self.return_to_groups_page()
+
+    def count(self):
+        wd = self.app.wd
+        self.app.navigation.open_page(name_page="groups")
+        return len(wd.find_elements_by_name("selected[]"))
 
