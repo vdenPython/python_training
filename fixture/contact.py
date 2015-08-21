@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'vden'
+from model.contact import Contact
+
 
 class ContactHelper:
 
@@ -47,3 +49,19 @@ class ContactHelper:
         wd = self.app.wd
         self.app.navigation.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        contacts = []
+        trx = 1
+        for element in wd.find_elements_by_name("entry"):
+            trx = trx+1
+            lastnametext = element.find_element_by_xpath(
+                "//div[1]/div[4]/form[2]/table/tbody/tr["+str(trx)+"]/td[2]").text
+            firstnametext = element.find_element_by_xpath(
+                "//div[1]/div[4]/form[2]/table/tbody/tr["+str(trx)+"]/td[3]").text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            contacts.append(Contact(id=id, lastname=lastnametext, firstname=firstnametext))
+
+        return contacts
