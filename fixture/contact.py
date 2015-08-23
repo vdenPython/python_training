@@ -34,16 +34,27 @@ class ContactHelper:
         self.app.common.change_field_value(field_name="notes", text=contact.notes)
 
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.app.navigation.open_home_page()
-        wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
+        self.select_contact_by_index(index)
         wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
         self.contact_cache = None
 
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_css_selector("img[alt=\"Edit\"]")[index].click()
+
     def modify_first_contact(self, new_contact_date):
+        self.modify_contact_by_index(0)
+
+    def modify_contact_by_index(self, index, new_contact_date):
         wd = self.app.wd
         self.app.navigation.open_home_page()
-        wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
+        self.select_contact_by_index(index)
         self.fill_contact_form(new_contact_date)
         wd.find_element_by_name("update").click()
         self.contact_cache = None
