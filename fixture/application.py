@@ -6,6 +6,7 @@ from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
 from fixture.navigation import NavigationHelper
 from fixture.common import CommonHelper
+import re
 
 
 class Application:
@@ -27,6 +28,16 @@ class Application:
 
     def destroy(self):
         self.wd.quit()
+
+    def clear_contact(self, s):
+        return re.sub("[( )-]", "",s)
+
+    def merge_phones_like_on_home_page(self, contact):
+        return "\n".join(filter(lambda x: x != " " ,
+                                (map(lambda x: self.clear_contact(x),
+                                     (filter(lambda x: x is not None,
+                                             [contact.homephone, contact.mobilephone,
+                                              contact.workphone, contact.seconderyphone]))))))
 
 
 
