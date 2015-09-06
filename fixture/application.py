@@ -7,6 +7,8 @@ from fixture.contact import ContactHelper
 from fixture.navigation import NavigationHelper
 from fixture.common import CommonHelper
 import re
+import random
+import string
 
 
 class Application:
@@ -38,6 +40,8 @@ class Application:
                                      (filter(lambda x: x is not None,
                                              [contact.homephone, contact.mobilephone,
                                               contact.workphone, contact.seconderyphone]))))))
+
+
 
 
 
