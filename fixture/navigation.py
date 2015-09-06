@@ -18,7 +18,8 @@ class NavigationHelper:
 
     def open_home_page(self):
         wd = self.app.wd
-        wd.get("http://192.168.0.2/addressbook/index.php")
+        #wd.get("http://192.168.0.2/addressbook/index.php")
+        wd.get("http://localhost/addressbook/index.php")
 
 
 
