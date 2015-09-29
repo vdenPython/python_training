@@ -19,11 +19,8 @@ def test_modify_group_name(app, db, check_ui):
         index = index+1
     old_groups[index] = group
     assert old_groups == new_groups
-
-    def clean(group):
-        return Group(id=group.id, name=group.name.strip())
     if check_ui:
-        assert sorted(map(clean, new_groups), key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
+        assert sorted(db.get_group_list(True), key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
 
 
 

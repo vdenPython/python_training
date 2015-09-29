@@ -45,9 +45,22 @@ class ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
         self.contact_cache = None
 
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        self.select_contact_by_id(id)
+        wd.find_element_by_css_selector(".left>input[value='Delete").click()
+        wd.switch_to_alert().accept()
+        self.app.navigation.open_home_page()
+        self.contact_cache = None
+
     def select_contact_by_index(self, index):
         wd = self.app.wd
         wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
+
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s'" % id).click()
 
     def modify_first_contact(self, new_contact_date):
         self.modify_contact_by_index(0)
