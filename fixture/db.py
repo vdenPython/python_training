@@ -3,7 +3,6 @@ import mysql.connector
 from model.group import Group
 from model.contact import Contact
 
-
 class Dbfixture:
 
     def __init__(self, host, name, user, password):

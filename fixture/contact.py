@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'vden'
 from model.contact import Contact
+from model.group import Group
 import re
 
 
@@ -129,3 +130,10 @@ class ContactHelper:
         seconderyphone = re.search("P: (.*)", text).group(1)
         return Contact(homephone=homephone, workphone=workphone,
                        mobilephone=mobilephone, seconderyphone=seconderyphone )
+
+    def add_contact_in_group(self, index, contact):
+        wd = self.app.wd
+        self.select_contact_by_id(contact.id)
+        wd.find_element_by_css_selector(".right>select").click()
+        wd.find_element_by_xpath("//div[@class='right']//option[%s]" %index).click()
+        wd.find_element_by_name("add").click()
